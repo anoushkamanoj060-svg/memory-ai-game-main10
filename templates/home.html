@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memory AI Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0f0f1a;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            color: #00ffcc;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 28px;
+            text-shadow: 4px 4px #ff00ff;
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 12px;
+            margin-bottom: 40px;
+            color: #ffff00;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 12px;
+            background-color: #ff00ff;
+            color: black;
+            text-decoration: none;
+            border: 4px solid #00ffcc;
+            box-shadow: 6px 6px #00ffcc;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px #ffff00;
+            background-color: #00ffcc;
+        }
+
+        .rules {
+            background-color: #1a1a2e;
+            border: 4px solid #00ffcc;
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 500px;
+            text-align: left;
+            font-size: 10px;
+            color: #aaffdd;
+        }
+
+        .rules h2 {
+            text-align: center;
+            color: #ffff00;
+            font-size: 14px;
+            text-shadow: 2px 2px #ff00ff;
+            margin-bottom: 15px;
+        }
+
+        .rules ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .rules li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .mute-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #ff00ff;
+            color: #000;
+            border: 3px solid #00ffcc;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 4px 4px #00ffcc;
+        }
+
+        .mute-btn:hover {
+            background-color: #00ffcc;
+            box-shadow: 6px 6px #ffff00;
+        }
+
+        .mute-btn.muted {
+            background-color: #666;
+            border-color: #999;
+        }
+    </style>
+
+    <script>
+        let isMuted = localStorage.getItem('audioMuted') === 'true';  // Restore mute state
+        let audioContext;
+        let masterGain;
+
+        // Initialize audio context
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                masterGain = audioContext.createGain();
+                masterGain.connect(audioContext.destination);
+                masterGain.gain.value = isMuted ? 0 : 1;  // Apply saved mute state
+            }
+        }
+
+        // Toggle mute
+        function toggleMute() {
+            const btn = document.getElementById('muteBtn');
+            isMuted = !isMuted;
+            localStorage.setItem('audioMuted', isMuted);  // Save mute state
+            initAudio();
+            
+            if (isMuted) {
+                btn.textContent = '🔕 SOUND OFF';
+                btn.classList.add('muted');
+                masterGain.gain.setValueAtTime(0, audioContext.currentTime);
+            } else {
+                btn.textContent = '🔊 SOUND ON';
+                btn.classList.remove('muted');
+                masterGain.gain.setValueAtTime(1, audioContext.currentTime);
+            }
+        }
+
+        window.onload = function() {
+            initAudio();
+            // Update button text based on saved state
+            const btn = document.getElementById('muteBtn');
+            if (isMuted) {
+                btn.textContent = '🔕 SOUND OFF';
+                btn.classList.add('muted');
+            }
+        };
+    </script>
+</head>
+
+<body>
+
+<button class="mute-btn" id="muteBtn" onclick="toggleMute()">🔊 SOUND ON</button>
+
+<h1>MEMORY AI GAME</h1>
+<p>Challenge the AI in this retro 8-bit battle!</p>
+
+<div class="rules">
+    <h2>RULES</h2>
+    <ul>
+        <li>Numbers are revealed for 5 seconds at game start</li>
+        <li>Click tiles to reveal numbers (1-9)</li>
+        <li>You gain points for each tile you pick</li>
+        <li>Higher numbers = more points</li>
+        <li>The AI takes turns picking tiles</li>
+        <li>Game ends when all tiles are revealed</li>
+        <li>Highest score wins!</li>
+    </ul>
+</div>
+
+<p>Select Difficulty:</p>
+
+<a class="btn" href="{{ url_for('select_grid', level='easy') }}">EASY</a>
+<a class="btn" href="{{ url_for('select_grid', level='medium') }}">MEDIUM</a>
+<a class="btn" href="{{ url_for('select_grid', level='hard') }}">HARD</a>
+
+</body>
+</html>
