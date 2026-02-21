@@ -418,56 +418,33 @@ session = {
 
 ### Screenshot 1: Home Page
 ```
-[Placeholder: Main menu with game title, rules, and three difficulty buttons]
-- Title: "MEMORY AI GAME"
-- Subtitle: "Challenge the AI in this retro 8-bit battle!"
-- Rules section with gameplay instructions
-- Buttons: EASY, MEDIUM, HARD
-- Mute button (top right)
+<img width="1920" height="1020" alt="Screenshot 2026-02-21 101114" src="https://github.com/user-attachments/assets/a4fbe5dd-32de-4618-b87f-219c92c51c65" />
+
 ```
 
 ### Screenshot 2: Grid Selection
 ```
-[Placeholder: Grid size selection screen]
-- Title: "MEMORY AI GAME"
-- Subtitle: "SELECT GRID SIZE"
-- Current Difficulty: [SELECTED LEVEL]
-- Four grid options:
-  ┌──────┬──────┐
-  │ 3x4  │ 4x4  │
-  ├──────┼──────┤
-  │ 4x5  │ 5x6  │
-  └──────┴──────┘
-- Back to Home button
+<img width="1920" height="1020" alt="Screenshot 2026-02-21 101131" src="https://github.com/user-attachments/assets/733c4ef3-0225-4000-8785-8250fcba7607" />
+
 ```
 
 ### Screenshot 3: Gameplay (4×4 Grid)
 ```
-[Placeholder: Active game board]
-- Score: Player: 15 | AI: 12
-- Grid with:
-  * Unrevealed tiles (borders)
-  * Player tiles (green numbers)
-  * AI tiles (red numbers)
-- Buttons: RESTART GAME, BACK TO HOME
-- Mute button (top right)
+<img width="1920" height="1020" alt="Screenshot 2026-02-21 101200" src="https://github.com/user-attachments/assets/064b0ce0-6a17-4c52-8cdf-af2bce9603fc" />
+
 ```
 
 ### Screenshot 4: Game Over Modal
 ```
-[Placeholder: Winner announcement]
-- Modal box with:
-  * Title: "GAME OVER!"
-  * Result: "Player Wins!" (or AI/Draw)
-  * Final Scores
-  * Buttons: HOME, PLAY AGAIN
+<img width="1920" height="1020" alt="Screenshot 2026-02-21 101217" src="https://github.com/user-attachments/assets/8260bc75-3e16-44cb-ac0b-dee76319d165" />
+
 ```
 
 ---
 
 ## 🎬 Demo Video
 
-**Demo Video Link**: [Add video link here]
+**Demo Video Link**: [(https://docs.google.com/videos/d/1xRza1BHLzJ3f6eHwKZ16wtDJAvVVwFbujiADqm49sCY/edit?usp=drive_link)]
 - **Duration**: 2-3 minutes
 - **Content**: Full gameplay walkthrough showing:
   1. Menu navigation
@@ -548,7 +525,7 @@ memory-ai-game/
 
 ## 👥 Team
 
-- **Developer**: Anous (Full Stack)
+- **Developer**: Anoushka , Mayoora
   - Backend: Flask, Python, Minimax Algorithm
   - Frontend: HTML, CSS, JavaScript
   - Deployment: Render.com configuration
@@ -635,6 +612,7 @@ Contributions are welcome! Here's how to contribute:
 ## 🚀 Deployment Guide
 
 ### Deploy to Render.com (Recommended)
+https://memory-ai-game-2.onrender.com/game
 
 1. **Push to GitHub**
    ```bash
